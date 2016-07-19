@@ -1,9 +1,18 @@
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 public class GUIServer extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-
+	private JTabbedPane tabDice;
+	private JTabbedPane tabCharacterList;
+	private JTabbedPane tabCharacterCreator;
+	private JPanel panePlayers;
+	private JPanel paneDice;
+	private JPanel paneGM;
+	private JPanel paneMap;
+	
 	public GUIServer() {
 		initializeComponents();
 		addComponents();
@@ -16,13 +25,13 @@ public class GUIServer extends JFrame{
 
 	private void initializeComponents() {
 		// Give components declared at the top particular values, eg
-		// New tabDice (same for server or client)
-		// New tabCharacterListServer
-		// New tabCharacterCreatorServer
-		// New panePlayers
-		// New paneDice
-		// New paneGM
-		// New paneMap
+		tabDice=new TabDice(); //(same for server or client?)
+		tabCharacterList=new TabCharacterListServer();
+		tabCharacterCreator=new TabCharacterCreatorServer();
+		panePlayers=new PanePlayersServer();
+		paneDice=new PaneDiceServer();
+		paneGM=new PaneGMServer();
+		paneMap=new PaneMapServer();
 	}
 	
 	private void addComponents() {
