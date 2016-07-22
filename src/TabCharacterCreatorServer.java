@@ -1,6 +1,6 @@
-import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
 
-public class TabCharacterCreatorServer extends JTabbedPane {
+public class TabCharacterCreatorServer extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 

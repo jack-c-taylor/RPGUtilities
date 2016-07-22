@@ -1,6 +1,6 @@
-import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
 
-public class TabDice extends JTabbedPane {
+public class TabDice extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 

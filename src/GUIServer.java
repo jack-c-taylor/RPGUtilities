@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -5,9 +7,9 @@ import javax.swing.JTabbedPane;
 public class GUIServer extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-	private JTabbedPane tabDice;
-	private JTabbedPane tabCharacterList;
-	private JTabbedPane tabCharacterCreator;
+	private JPanel tabDice;
+	private JPanel tabCharacterList;
+	private JPanel tabCharacterCreator;
 	private JPanel panePlayers;
 	private JPanel paneDice;
 	private JPanel paneGM;
@@ -35,8 +37,15 @@ public class GUIServer extends JFrame{
 	}
 	
 	private void addComponents() {
-		// TODO Auto-generated method stub
-		
+		JTabbedPane tabs=new JTabbedPane();
+		tabs.addTab("Character List", tabCharacterList);
+		tabs.addTab("Character Creator", tabCharacterCreator);
+		tabs.addTab("Dice Roller", tabDice);
+		add(tabs, BorderLayout.SOUTH);
+		add(paneDice, BorderLayout.NORTH);
+		add(paneMap, BorderLayout.WEST);
+		add(paneGM, BorderLayout.CENTER);
+		add(panePlayers, BorderLayout.EAST);
 	}
 
 }
