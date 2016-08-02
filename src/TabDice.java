@@ -1,6 +1,7 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -22,12 +23,8 @@ public class TabDice extends JPanel {
 		customPane=new JTextArea();
 		customButton=new JButton("Roll");
 		r=new Random();
-		
-		int[] numbers={4,6,8,10,12,20,100};
-		diceList = new ArrayList<Dice>();
-		for (int i=0;i<numbers.length;i++){
-			diceList.add(new Dice(numbers[i]));
-		}
+		diceList=new ArrayList<Dice>();
+		Arrays.asList(4,6,8,10,12,20,100).stream().forEach(p-> diceList.add(new Dice(p)));
 		diceList.forEach(p-> p.addActionListener(e -> output.setText("You rolled a "+(r.nextInt(p.getMaxRand())+1)+".")));
 		customButton.addActionListener(e -> output.setText(rollCustomNumber()));
 		createGridBag();
