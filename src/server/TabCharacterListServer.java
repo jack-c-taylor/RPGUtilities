@@ -1,3 +1,4 @@
+package server;
 import javax.swing.JPanel;
 
 public class TabCharacterListServer extends JPanel {

@@ -1,3 +1,4 @@
+package server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,12 +19,14 @@ public class Controller {
 	private Socket client;
 	private ArrayList<Socket> clients;
 	private ArrayList<Integer> players;
+	private String name;
 	
 	private Controller(){
 		players=new ArrayList<Integer>();
 		serverPort=404;
 		online=true;
 		output="Server is now online.";
+		name="The DM";
 		switchPort();
 	}
 	
@@ -107,6 +110,13 @@ public class Controller {
 	public synchronized void addPlayer(int playerAddress){
 		players.add(playerAddress);
 		output=playerAddress+" has connected.\n";
+	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	public class ClientThread implements Runnable {
 		

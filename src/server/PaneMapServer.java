@@ -1,3 +1,4 @@
+package server;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 

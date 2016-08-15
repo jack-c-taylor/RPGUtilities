@@ -1,3 +1,4 @@
+package server;
 import javax.swing.JButton;
 
 public class Dice extends JButton {

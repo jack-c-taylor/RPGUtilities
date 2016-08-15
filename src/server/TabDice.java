@@ -1,3 +1,4 @@
+package server;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class TabDice extends JPanel {
 	
 	private void setOutput(String output) {
 		if (makeResultPublic.isSelected()){
-			controller.setOutput("\nThe DM"+output);
+			controller.setOutput("\n"+controller.getName()+output);
 		}else{
 			this.output.setText("You"+output);
 		}
