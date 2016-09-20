@@ -1,4 +1,4 @@
-package server;
+package player;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ public class TabDice extends JPanel {
 	private JTextArea customPane;
 	private JButton customButton;
 	private Random r;
-	private ControllerServer controllerServer;
+	private ControllerPlayer controllerPlayer;
 	private JRadioButton makeResultPublic;
 
 	public TabDice(){
-		controllerServer=ControllerServer.getInstance();
+		controllerPlayer=ControllerPlayer.getInstance();
 		output=new JLabel("You rolled a...");
 		customPane=new JTextArea();
 		customButton=new JButton("Roll");
@@ -38,7 +38,7 @@ public class TabDice extends JPanel {
 	
 	private void setOutput(String output) {
 		if (makeResultPublic.isSelected()){
-			controllerServer.setOutput("\n"+controllerServer.getName()+output);
+			controllerPlayer.setOutput("\n"+controllerPlayer.getName()+output);
 		}else{
 			this.output.setText("You"+output);
 		}

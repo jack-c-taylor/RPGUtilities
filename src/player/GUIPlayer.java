@@ -1,25 +1,24 @@
-package server;
+package player;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-public class GUIServer extends JFrame{
+public class GUIPlayer extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel tabDice;
 	private JPanel tabCharacterList;
 	private JPanel tabCharacterCreator;
-	private PanePlayersServer panePlayers;
+	private PanePlayersPlayer panePlayers;
 	private JPanel paneGM;
-	private PaneMapServer paneMap;
-	private ControllerServer controller;
+	private PaneMapPlayer paneMap;
 	
-	public GUIServer() {
+	public GUIPlayer() {
 		initializeComponents();
 		addComponents();
-		setTitle("RPG Utilities-GM Perspective");
+		setTitle("RPG Utilities-Player Perspective");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setLocationRelativeTo(null);
@@ -30,13 +29,13 @@ public class GUIServer extends JFrame{
 	private void initializeComponents() {
 		// Give components declared at the top particular values, eg
 		tabDice=new TabDice(); //(same for server or client?)
-		tabCharacterList=new TabCharacterListServer();
-		tabCharacterCreator=new TabCharacterCreatorServer();
-		panePlayers=new PanePlayersServer();
-		paneGM=new PaneGMServer();
-		paneMap=new PaneMapServer();
-		controller=ControllerServer.getInstance();
+		tabCharacterList=new TabCharacterListPlayer();
+		tabCharacterCreator=new TabCharacterCreatorPlayer();
+		panePlayers=new PanePlayersPlayer();
+		paneMap=new PaneMapPlayer();
+		ControllerPlayer controller=ControllerPlayer.getInstance();
 		controller.setPaneMap(paneMap);
+		paneGM=new PaneGMPlayer();
 		controller.setChatWindow(panePlayers.getChatWindow());
 	}
 	

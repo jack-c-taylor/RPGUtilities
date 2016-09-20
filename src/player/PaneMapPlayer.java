@@ -1,17 +1,17 @@
-package server;
+package player;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class PaneMapServer extends JPanel {
+public class PaneMapPlayer extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<MapTile> mapTiles;
 	private int width;
 	private int height;
 	
-	public PaneMapServer(){
+	public PaneMapPlayer(){
 		width=10;
 		height=7;
 		setLayout(new GridLayout(height, width));
@@ -20,13 +20,12 @@ public class PaneMapServer extends JPanel {
 			mapTiles.add(new MapTile());
 			add(mapTiles.get(i));
 		}
+		
 	}
 	
-	public String getMapTiles(){
-		StringBuilder output=new StringBuilder(mapTiles.get(0).getIntValue()+"");
-		for (int i=1; i<width*height;i++){
-			output.append(", "+mapTiles.get(i).getIntValue());
+	public void setMapTiles(int[] input){
+		for (int i=0; i<input.length;i++){
+			mapTiles.get(i).setIntValue(input[i]);
 		}
-		return output.toString();
 	}
 }

@@ -1,42 +1,40 @@
-package server;
+package player;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class PanePlayersServer extends JPanel {
+public class PanePlayersPlayer extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextArea chatWindow;
+	private JButton chatButton;
+	private ControllerPlayer controllerPlayer;
 	private JTextArea chatInput;
-	private AbstractButton chatButton;
-	private ControllerServer controllerServer;
 
-	public PanePlayersServer() {
+	public PanePlayersPlayer() {
 		setLayout(new BorderLayout());
-		controllerServer = ControllerServer.getInstance();
+		controllerPlayer = ControllerPlayer.getInstance();
 		chatWindow = new JTextArea("Chat Window:");
 		chatWindow.setEditable(false);
 		chatWindow.setLineWrap(true);
 		chatWindow.setWrapStyleWord(true);
-		chatInput = new JTextArea("");
+		chatInput = new JTextArea();
 		chatButton = new JButton("Send Message");
 		chatButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				if (!chatInput.getText().equals("")) {
-					chatWindow.append("\nThe DM: " +chatInput.getText());
-					controllerServer.updateAll("The DM: " + chatInput.getText());
+					controllerPlayer.sendMessage(chatInput.getText());
 					chatInput.setText("");
 				}
 			}
 		});
-		JPanel chatPanel = new JPanel(new BorderLayout());
+		JPanel chatPanel=new JPanel(new BorderLayout());
 		chatPanel.add(chatWindow, BorderLayout.CENTER);
 		chatPanel.add(chatInput, BorderLayout.SOUTH);
 		add(chatPanel, BorderLayout.CENTER);
