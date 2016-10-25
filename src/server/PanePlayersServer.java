@@ -31,7 +31,7 @@ public class PanePlayersServer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (!chatInput.getText().equals("")) {
 					chatWindow.append("\nThe DM: " +chatInput.getText());
-					controllerServer.updateAll("The DM: " + chatInput.getText());
+					controllerServer.updateAll("PRINT The DM: " + chatInput.getText());
 					chatInput.setText("");
 				}
 			}

@@ -134,6 +134,9 @@ public class ControllerPlayer {
 				case "PRINT":
 					chatWindow.append("\n" + response.substring(6));
 					break;
+				case "DICE":
+					eventsInfo.append("\n" + response.substring(5));
+					break;
 				case "NAME":
 					name=response.substring(5);
 					eventsInfo.append("\nConnected as '"+name+"'.");
@@ -164,6 +167,12 @@ public class ControllerPlayer {
 		eventsInfo.append(output);
 		if (toServer != null) {
 			toServer.println("PRINT " + output.substring(1));
+		}
+	}
+	
+	public synchronized void printDiceResult(String output) {
+		if (toServer != null) {
+			toServer.println("DICE " + output.substring(1));
 		}
 	}
 

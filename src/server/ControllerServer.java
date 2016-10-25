@@ -103,10 +103,7 @@ public class ControllerServer {
 	}
 
 	public synchronized void setOutput(String output) {
-		eventsInfo.append(output);
-		for (int i = 0; i < clients.size(); i++) {
-			clients.get(i).output.println("PRINT " + output.substring(1));
-		}
+		eventsInfo.append("\n"+output);
 	}
 
 	public void waitFor(int milliseconds) {
@@ -141,7 +138,7 @@ public class ControllerServer {
 
 	public void updateAll(String text) {
 		for (int i = 0; i < outputs.size(); i++) {
-			outputs.get(i).println("PRINT " + text);
+			outputs.get(i).println(text);
 		}
 	}
 
@@ -198,16 +195,20 @@ public class ControllerServer {
 					switch (command[0]) {
 					case "PRINT":
 						chatWindow.append("\n" + playerName + ": " + currentLine.substring(6));
-						updateAll(playerName + ": " + currentLine.substring(6));
+						updateAll("PRINT "+playerName + ": " + currentLine.substring(6));
 						break;
 					case "MAP":
 						output.println("MAP " + paneMap.getMapTiles());
+						break;
+					case "DICE":
+						eventsInfo.append("\n" + currentLine.substring(5));
+						updateAll(currentLine);
 						break;
 					case "NAME":
 						String lastName = playerName;
 						playerName = currentLine.substring(5);
 						eventsInfo.append("\n" + lastName + " changed their name to '" + playerName + "'.");
-						updateAll(lastName + " changed their name to '" + playerName + "'.");
+						updateAll("PRINT "+lastName + " changed their name to '" + playerName + "'.");
 					default:
 						output.println("FAIL");
 					}

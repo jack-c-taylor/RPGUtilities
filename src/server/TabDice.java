@@ -38,7 +38,8 @@ public class TabDice extends JPanel {
 	
 	private void setOutput(String output) {
 		if (makeResultPublic.isSelected()){
-			controllerServer.setOutput("\n"+controllerServer.getName()+output);
+			controllerServer.setOutput(controllerServer.getName()+output);
+			controllerServer.updateAll("DICE "+controllerServer.getName()+output);
 		}else{
 			this.output.setText("You"+output);
 		}
